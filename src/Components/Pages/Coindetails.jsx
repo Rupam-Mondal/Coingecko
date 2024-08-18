@@ -2,10 +2,18 @@ import { useParams } from "react-router-dom"
 import { Coindata } from "../../services/Singlecoindata"
 import { useQuery } from "react-query"
 import Coingraph from "../CoinHistory/Coingraph"
+import MyLoader from "../Loader/Loader"
 
 function Coindetails(){
     const {coinID} = useParams()
     const {data , isLoading , isError , error} = useQuery(['singlecoin' , coinID] , () => Coindata(coinID))
+    if(isLoading){
+        return (
+            <>
+                <MyLoader/>
+            </>
+        )
+    }
 
     return (
         <>
