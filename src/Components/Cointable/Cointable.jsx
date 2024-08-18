@@ -2,10 +2,12 @@ import { useQuery } from "react-query";
 import { Coindata } from "../../services/Coindata";
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useNavigate } from "react-router-dom";
 
 export function Cointable() {
     const [page, setPage] = useState(1);
     const [coins , setCoins] = useState([])
+    const navigate = useNavigate()
 
     const { data, isLoading, isError, error } = useQuery(
         ['coins', page],
@@ -16,6 +18,9 @@ export function Cointable() {
             keepPreviousData:true,
         }
     );
+    function clickHandler(id){
+        navigate(`/details/${id}`)
+    }
 
     function fetchData(){
         setPage(page + 1)
@@ -44,7 +49,7 @@ export function Cointable() {
                     <div>
                         {isLoading && <div className="text-center py-4">Loading...</div>}
                         {coins && coins.map((coin) => (
-                            <div key={coin.id} className="min-w-[600px] w-full bg-transparent text-white flex py-4 px-4 items-center justify-between border-b border-gray-700">
+                            <div key={coin.id} onClick={() => {clickHandler(coin.id)}} className="min-w-[600px] w-full bg-transparent text-white flex py-4 px-4 items-center justify-between border-b border-gray-700 cursor-pointer">
                                 <div className="flex items-center gap-4 basis-[35%]">
                                     <div className="w-[3rem] h-[3rem]">
                                         <img src={coin.image} className="w-full h-full rounded-full" alt={coin.name} />
