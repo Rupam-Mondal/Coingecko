@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import { Coindata } from "../../services/Singlecoindata"
 import { useQuery } from "react-query"
-import { parse } from "postcss"
+import Coingraph from "../CoinHistory/Coingraph"
 
 function Coindetails(){
     const {coinID} = useParams()
@@ -28,6 +28,10 @@ function Coindetails(){
                     </p>
                 </div>
             </div>
+
+            <Coingraph
+                coinID={coinID}
+            />
         </>
     );
 
