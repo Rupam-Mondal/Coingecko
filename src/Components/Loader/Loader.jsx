@@ -1,7 +1,7 @@
 import ContentLoader from "react-content-loader";
 
 const MyLoader = () => (
-    <div className="h-[100vh] flex justify-center items-start">
+    <div className="h-screen w-screen flex justify-center items-start">
         <ContentLoader
             height={140}
             speed={1}

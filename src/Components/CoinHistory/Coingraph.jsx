@@ -6,7 +6,7 @@ function Coingraph({coinID}){
     Chart.register(CategoryScale);
     return (
         <>
-            <h1>CoinInfo{coinID}</h1>
+            {/* <h1>CoinInfo{coinID}</h1> */}
             {/* <button
                 onClick={() => {
                     const ans = Historicdata(coinID)
